@@ -94,4 +94,4 @@ def testLogDatasetStats():
     log_dataset_statistics(X_train, y_train, X_test, y_test)
 
 
-testLogDatasetStats();
+# testLogDatasetStats();

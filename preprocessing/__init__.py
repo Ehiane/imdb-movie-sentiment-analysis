@@ -24,9 +24,21 @@ Authors:
 Created: March 19, 2025
 """
 
-from .load_data import load_imdb_data;
-from .pad_sequences import pad_reviews;
-from .dataset_stats import log_dataset_statistics;
+def testInit():
+    try:
+        from load_data import load_imdb_data
+        from pad_sequences import pad_reviews
+        from dataset_stats import log_dataset_statistics
+        print("`__init__.py` is working! Package imports are successful.")
+    except ImportError as e:
+        print("❌ `__init__.py` is NOT working! ImportError:", e)
+
+testInit();
+
+from load_data import load_imdb_data;
+from pad_sequences import pad_reviews;
+from dataset_stats import log_dataset_statistics;
 
 # this defines the public interface of this module (controlls what can be imported from this module)
 __all__ = ["load_imdb_data", "pad_reviews", "log_dataset_statistics"];
+
