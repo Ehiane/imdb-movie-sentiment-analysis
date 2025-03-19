@@ -1,6 +1,6 @@
-# 🚀 Setting Up the Movie Sentiment Analysis Repository
+#  Setting Up the Movie Sentiment Analysis Repository (Please Read & Follow)
 
-## !! Please read !! 
+
 Follow these steps to set up this repository on your local machine.
 
 ---
