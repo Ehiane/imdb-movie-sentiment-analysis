@@ -38,21 +38,3 @@ def pad_reviews(sequences, maxlen=200):
         numpy.ndarray: Padded sequences.
     """
     return tf.keras.preprocessing.sequence.pad_sequences(sequences, maxlen=maxlen, padding='post', truncating='post');
-
-
-def test_Pad_reviews():        
-    # Sample tokenized reviews (varied lengths)
-    sample_reviews = [
-        [1, 14, 22, 16],  # Short review
-        [43, 530, 973, 1622, 1385, 65, 458, 4468, 66, 394],  # Medium review
-        [3, 128, 12, 19, 32, 50, 70, 122, 140, 200, 300, 400, 500, 600]  # Long review
-    ]
-
-    # Apply padding (maxlen = 10)
-    padded_reviews = pad_reviews(sample_reviews, maxlen=10)
-
-    # Print results
-    print("Original Reviews:", sample_reviews)
-    print("Padded Reviews:", padded_reviews)
-
-# test_Pad_reviews()

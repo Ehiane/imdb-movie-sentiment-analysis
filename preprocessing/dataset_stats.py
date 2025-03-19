@@ -81,17 +81,3 @@ def log_dataset_statistics(training_set_reviews, training_set_labels, test_set_r
     print("\nTesting Set Label Distribution:")
     for label, count in test_distribution.items():
         print(f"  {label}: {count}")
-
-
-from load_data import load_imdb_data
-
-def testLogDatasetStats():        
-    # Load dataset using the function
-    X_train, y_train, X_test, y_test = load_imdb_data();
-
-    # Run the dataset statistics function to check outputs
-    print("\n Running Dataset Statistics Test...")
-    log_dataset_statistics(X_train, y_train, X_test, y_test)
-
-
-# testLogDatasetStats();
