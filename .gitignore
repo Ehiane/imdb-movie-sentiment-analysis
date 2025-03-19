@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Log files
+logs/
+*.log
+
+# Dataset files (Optional: Prevents large files from being tracked)
+*.csv
+*.tsv
+*.json
+*.xlsx
+data/
+
+# TensorFlow Model Checkpoints & Saved Models
+checkpoints/
+saved_model/
+*.h5
+*.pb
+*.tflite
+
+# Python cache
+*.pyo
+*.pyd
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Environment Variables & API Keys
+.env
+config.json
+secrets.json
