@@ -32,7 +32,7 @@ def load_imdb_data(num_words=10_000):
 
     Returns:
     --------
-    tuple: (training_set_reviews, training_set_labels, test_set_reviews, test_set_labels)
+    tuple: (training_set_reviews, training_set_labels, test_set_reviews, y_test)
         - training_set_reviews (list of lists): Tokenized training reviews.
         - training_set_labels (list): Labels for training reviews (0 = negative, 1 = positive).
         - test_set_reviews (list of lists): Tokenized test reviews.
@@ -43,6 +43,8 @@ def load_imdb_data(num_words=10_000):
     return training_set_reviews, training_set_labels, test_set_reviews, test_set_labels;
 
 
+import numpy as np
+
 def test_Load_imdb_data():
     """
     Testing out the function (It worked)
@@ -52,16 +54,24 @@ def test_Load_imdb_data():
     # Load dataset using the function
     X_train, y_train, X_test, y_test = load_imdb_data()
 
-    # Print basic info to check if data is loaded correctly
+    # Print basic dataset info
     print(f"Training Samples: {len(X_train)}")
-    print(f"Testing Samples: {len(X_test)}")
+    print(f"Testing Samples: {len(X_test)}\n")
 
-    # Check label distribution
-    print(f"Train Labels Distribution: {set(y_train)}")
-    print(f"Test Labels Distribution: {set(y_test)}")
+    # Check label distribution with clear formatting
+    train_labels, train_counts = np.unique(y_train, return_counts=True)
+    test_labels, test_counts = np.unique(y_test, return_counts=True)
 
-    # Print first review (as tokenized numbers)
-    print(f"Sample Review (First 10 words): {X_train[0][:10]}")
-    print(f"Corresponding Label: {y_train[0]} (0 = Negative, 1 = Positive)")
+    print("Training Set Label Distribution:")
+    print(f"  Negative Reviews (0): {train_counts[0]}")
+    print(f"  Positive Reviews (1): {train_counts[1]}\n")
+
+    print("Testing Set Label Distribution:")
+    print(f"  Negative Reviews (0): {test_counts[0]}")
+    print(f"  Positive Reviews (1): {test_counts[1]}\n")
+
+    # Print a sample review in tokenized form (first 10 words)
+    print("Sample Review (First 10 Words):", X_train[0][:10])
+    print(f"Corresponding Sentiment Label: {y_train[0]} (0 = Negative, 1 = Positive)")
 
 # test_Load_imdb_data()

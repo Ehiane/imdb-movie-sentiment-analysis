@@ -31,18 +31,22 @@ def log_dataset_statistics(training_set_reviews, training_set_labels, test_set_r
     """
     Description:
     ------------
-    Logs important statistics about the IMDb dataset to help verify preprocessing.
-    
+    Logs key statistics about the IMDb dataset to verify preprocessing correctness.
+
+    This function helps check:
+     **Total number of reviews** in the training and testing sets.
+     **Average review length** before padding, to understand text distribution.
+     **Label distribution** (0 = negative, 1 = positive) to ensure the dataset is balanced.
     
     Parameters:
     -----------
-    X_train : list of lists
+    training_set_reviews : list of lists
         Tokenized movie reviews for training.
-    y_train : list
+    training_set_labels : list
         Sentiment labels (0 = negative, 1 = positive) for training.
-    X_test : list of lists
+    test_set_reviews : list of lists
         Tokenized movie reviews for testing.
-    y_test : list
+    test_set_labels : list
         Sentiment labels (0 = negative, 1 = positive) for testing.
 
     Logs:
@@ -64,16 +68,30 @@ def log_dataset_statistics(training_set_reviews, training_set_labels, test_set_r
     # Check label distribution
     train_labels, train_counts = np.unique(training_set_labels, return_counts=True)
     test_labels, test_counts = np.unique(test_set_labels, return_counts=True)
-    
-    print(f"Train Labels Distribution: {dict(zip(train_labels, train_counts))}")
-    print(f"Test Labels Distribution: {dict(zip(test_labels, test_counts))}")
+
+    # Format output with clear labels
+    train_distribution = { "Negative Reviews (0)": train_counts[0], "Positive Reviews (1)": train_counts[1] }
+    test_distribution = { "Negative Reviews (0)": test_counts[0], "Positive Reviews (1)": test_counts[1] }
+
+    # Print label distribution
+    print("Training Set Label Distribution:")
+    for label, count in train_distribution.items():
+        print(f"  {label}: {count}")
+
+    print("\nTesting Set Label Distribution:")
+    for label, count in test_distribution.items():
+        print(f"  {label}: {count}")
 
 
 from load_data import load_imdb_data
 
-# Load dataset using the function
-X_train, y_train, X_test, y_test = load_imdb_data()
+def testLogDatasetStats():        
+    # Load dataset using the function
+    X_train, y_train, X_test, y_test = load_imdb_data();
 
-# Run the dataset statistics function to check outputs
-print("\n🔹 Running Dataset Statistics Test...")
-log_dataset_statistics(X_train, y_train, X_test, y_test)
+    # Run the dataset statistics function to check outputs
+    print("\n Running Dataset Statistics Test...")
+    log_dataset_statistics(X_train, y_train, X_test, y_test)
+
+
+testLogDatasetStats();

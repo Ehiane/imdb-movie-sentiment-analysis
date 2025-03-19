@@ -55,4 +55,4 @@ def test_Pad_reviews():
     print("Original Reviews:", sample_reviews)
     print("Padded Reviews:", padded_reviews)
 
-test_Pad_reviews()
+# test_Pad_reviews()
