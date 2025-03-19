@@ -21,6 +21,7 @@ import numpy as np
 from load_data import load_imdb_data
 from pad_sequences import pad_reviews
 from dataset_stats import log_dataset_statistics
+from dataset_stats import decode_review
 
 
 class TestPreprocessing(unittest.TestCase):
@@ -59,13 +60,6 @@ class TestPreprocessing(unittest.TestCase):
         print(f"   Negative Reviews (0): {test_counts[0]}")
         print(f"   Positive Reviews (1): {test_counts[1]}")
 
-    def test_log_dataset_stats(self):
-        """Test dataset statistics logging"""
-
-        print("\n✅ ---- Running log_dataset_stats function ----\n");
-        X_train, y_train, X_test, y_test = load_imdb_data()
-        print("\n✅ Running Dataset Statistics Test...")
-        log_dataset_statistics(X_train, y_train, X_test, y_test)
 
     def test_pad_reviews(self):
         """Test padding sequences"""
@@ -85,6 +79,29 @@ class TestPreprocessing(unittest.TestCase):
         for review in padded_reviews:
             self.assertEqual(len(review), 10)
 
+    def test_log_dataset_stats(self):
+        """Test dataset statistics logging"""
+
+        print("\n✅ ---- Running log_dataset_stats function ----\n");
+        X_train, y_train, X_test, y_test = load_imdb_data()
+        print("\n✅ Running Dataset Statistics Test...")
+        log_dataset_statistics(X_train, y_train, X_test, y_test)
+
+    def test_tokenization_verification(self):
+        """Test if tokenized IMDb reviews can be converted back to text"""
+        print("\n✅ ---- Running tokenization verification function ----\n")
+        X_train, y_train, _, _ = load_imdb_data()
+
+        # Print a sample tokenized review
+        print("\n✅ Sample Tokenized Review (First 10 words):", X_train[0][:10])
+
+        # Decode and print the same review as text
+        decoded = decode_review(X_train[0])
+        print("\n✅ Decoded Review:", decoded)
+
+        # Ensure that decoding returns a valid string
+        self.assertIsInstance(decoded, str)
+        self.assertGreater(len(decoded.split()), 5)  # Ensure it contains some words
 
 if __name__ == "__main__":
     unittest.main()

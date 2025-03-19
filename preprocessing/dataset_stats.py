@@ -81,3 +81,28 @@ def log_dataset_statistics(training_set_reviews, training_set_labels, test_set_r
     print("\nTesting Set Label Distribution:")
     for label, count in test_distribution.items():
         print(f"  {label}: {count}")
+
+import tensorflow as tf;
+
+def decode_review(encoded_review):
+    """
+    Converts a tokenized IMDb review (list of word IDs) back into readable text.
+
+    Parameters:
+    -----------
+    encoded_review : list
+        A list of word indices representing a tokenized IMDb review.
+
+    Returns:
+    --------
+    str : The decoded movie review as human-readable text.
+    """
+    word_index = tf.keras.datasets.imdb.get_word_index();
+    
+    # The dataset reserves index 1 for 'START', 2 for 'UNKNOWN', etc.
+    reverse_word_index = {value: key for key, value in word_index.items()}
+    
+    # Decode review: replace word IDs with actual words
+    decoded_review = " ".join([reverse_word_index.get(i - 3, "<?>") for i in encoded_review])
+    
+    return decoded_review
