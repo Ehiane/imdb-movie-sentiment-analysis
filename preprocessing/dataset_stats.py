@@ -29,7 +29,11 @@ import numpy as np
 
 def log_dataset_statistics(training_set_reviews, training_set_labels, test_set_reviews, test_set_labels):
     """
+    Description:
+    ------------
     Logs important statistics about the IMDb dataset to help verify preprocessing.
+    
+    
     Parameters:
     -----------
     X_train : list of lists
