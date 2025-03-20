@@ -62,5 +62,7 @@ pip install -r requirements.txt
 
 ---
 
+##  Download this file ![glove.6B.100d.txt](https://huggingface.co/stanfordnlp/glove/resolve/main/glove.6B.zip) and put it in the folder called "data" in the root folder. 
+
 ## ✅ **Now your repository is fully set up!** 🎉  
 If you run into any issues, feel free to reach out in the GitHub issues section or our team chat. 🚀

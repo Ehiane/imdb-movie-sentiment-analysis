@@ -23,10 +23,10 @@ Authors:
 
 Created: March 19, 2025
 """
-from load_data import load_imdb_data;
-from pad_sequences import pad_reviews;
-from dataset_stats import log_dataset_statistics;
+from .load_data import load_imdb_data;
+from .pad_sequences import pad_reviews;
+from .dataset_stats import log_dataset_statistics;
+from .embedding import load_glove_embeddings, create_embedding_matrix; 
 
 # this defines the public interface of this module (controlls what can be imported from this module)
-__all__ = ["load_imdb_data", "pad_reviews", "log_dataset_statistics"];
-
+__all__ = ["load_imdb_data", "pad_reviews", "log_dataset_statistics", "load_glove_embeddings", "create_embedding_matrix"];
