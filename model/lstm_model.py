@@ -67,3 +67,4 @@ model.compile(
 )
 
 print("✅ Model architecture ready with GloVe embeddings!")
+# to run: python .\lstm_model.py

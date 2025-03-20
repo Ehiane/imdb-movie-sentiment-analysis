@@ -48,3 +48,6 @@ history = model.fit(
 # Save the model
 model.save("models/lstm_glove_imdb.h5")
 print("✅ Model training complete & saved!")
+
+
+# to run this: python .\train_model.py
